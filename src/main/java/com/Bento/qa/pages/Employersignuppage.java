@@ -46,14 +46,7 @@ public class Employersignuppage extends TestBase {
 //	m_driver.findElement(By.xpath("//input[contains(@id,'EnterCity')]")).sendKeys(Keys.TAB , "Ohio", Keys.ENTER);
 //	String res = m_driver.findElement(By.xpath("//div[@class='css-1hwfws3']")).getText();
 //	System.out.println("result : " + res);
-	
-	 @FindBy(xpath = "//input[contains(@id,'EnterCity')]")
-	 WebElement tabcity;
-	
-	@FindBy(xpath = "//div[@class='css-1hwfws3']")
-	WebElement DropDownValue;
-	
-	
+
 	@FindBy(id = "agreeToCambalt")
 	WebElement checkbox ;
 	
@@ -69,15 +62,9 @@ public class Employersignuppage extends TestBase {
 	{
 		new_signup_link.click();
 		}
+
 	
-	public void statedropdown(String State) throws InterruptedException
-	{
-    driver.findElement(By.xpath("//input[contains(@id,'EnterCity')]")).sendKeys(Keys.TAB , State, Keys.ENTER);
-		String res = driver.findElement(By.xpath("//div[@class='css-1hwfws3']")).getText();
-		System.out.println("result : " + res);
-	}
-	
-	public void companydetails(String CompanyName,String CompanyAddress1,String CompanyAddress2,String CityName,String ZipCode,String FirstName,String MiddleName,String LastName,String Email,String PhoneNumber) throws InterruptedException
+	public void companydetails(String CompanyName,String CompanyAddress1,String CompanyAddress2,String CityName,String State,String ZipCode,String FirstName,String MiddleName,String LastName,String Email,String PhoneNumber) throws InterruptedException
 	{
 		company_name.sendKeys(CompanyName);
 		Thread.sleep(1000);
@@ -87,6 +74,8 @@ public class Employersignuppage extends TestBase {
 		Thread.sleep(1000);
 		city.sendKeys(CityName);
 		Thread.sleep(1000);
+		city.sendKeys(Keys.TAB ,State, Keys.ENTER);
+		Thread.sleep(1000);
 		Zipcode.sendKeys(ZipCode);
 		Thread.sleep(1000);
 		AdminFirstName.sendKeys(FirstName);
@@ -95,10 +84,7 @@ public class Employersignuppage extends TestBase {
 		Thread.sleep(1000);
 		AdminLastName.sendKeys(LastName);
 		Thread.sleep(1000);
-//		tabcity.sendKeys(Keys.TAB,State,Keys.ENTER);
-//		Thread.sleep(1000);
-//		DropDownValue.getText();
-//		Thread.sleep(1000);
+
 		AdminEmail.sendKeys(Email);
 		Thread.sleep(1000);
 		AdminPhoneNumber.sendKeys(PhoneNumber);
