@@ -1,5 +1,7 @@
 package com.Bento.qa.testcases;
 
+import java.io.IOException;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -23,7 +25,7 @@ public class SignupStep2Test extends TestBase{
 		}
 	
 	@Test(priority = 0)
-	 public void LoginStep2WithValidPassword() throws InterruptedException {
+	 public void LoginStep2WithValidPassword() throws InterruptedException, IOException {
 		 /*
 		  * Login with valid Password
 		  */
@@ -32,6 +34,7 @@ public class SignupStep2Test extends TestBase{
 		SignupStep2.employerlogin(prop.getProperty("empid"),prop.getProperty("pwd"));
 		Thread.sleep(5000);
 		System.out.println("payment bank information");
+		
 		SignupStep2.Step2_Payment_Information(prop.getProperty("bank_account"),prop.getProperty("confirm_bank_account"),
 				prop.getProperty("bank_routing"),prop.getProperty("confirm_bank_routing"),prop.getProperty("Bank_name"),
 				prop.getProperty("Account_holder_name"),prop.getProperty("date_of_birth"),prop.getProperty("tax_id"));
