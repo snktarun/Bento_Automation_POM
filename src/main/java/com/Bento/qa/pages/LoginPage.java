@@ -18,6 +18,13 @@ public class LoginPage extends TestBase {
 	WebElement signinbtn;
 	
 	
+	@FindBy(xpath = "//div[@class='row marB10']/div[2]/button/div[1]/div[1]/span")
+	WebElement bulkemp;
+	
+	
+	
+	
+	
 	//Constructor: Initialize webdriver from base class
 	public LoginPage() {
 		PageFactory.initElements(driver, this);

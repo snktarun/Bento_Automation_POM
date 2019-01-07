@@ -24,6 +24,7 @@ public class SignupStep2Test extends TestBase{
 		Thread.sleep(2000);
 		}
 	
+	
 	@Test(priority = 0)
 	 public void LoginStep2WithValidPassword() throws InterruptedException, IOException {
 		 /*
