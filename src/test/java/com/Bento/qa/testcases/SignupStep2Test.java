@@ -2,6 +2,7 @@ package com.Bento.qa.testcases;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -35,22 +36,13 @@ public class SignupStep2Test extends TestBase{
 		SignupStep2.employerlogin(prop.getProperty("empid"),prop.getProperty("pwd"));
 		Thread.sleep(5000);
 		System.out.println("payment bank information");
-		
-		SignupStep2.Step2_Payment_Information(prop.getProperty("bank_account"),prop.getProperty("confirm_bank_account"),
+		/*SignupStep2.Step3_Payment_Information(prop.getProperty("bank_account"),prop.getProperty("confirm_bank_account"),
 				prop.getProperty("bank_routing"),prop.getProperty("confirm_bank_routing"),prop.getProperty("Bank_name"),
 				prop.getProperty("Account_holder_name"),prop.getProperty("date_of_birth"),prop.getProperty("tax_id"));
+		*/
+		SignupStep2.step4_select_plans();
 		
 			}
-	//prop.getProperty("director_dob"),prop.getProperty("director_last_4_ssn"),
-	
-	
-	/*@Test(priority = 1)
-	public void PaymentPageStep2 () throws InterruptedException
-	{
 
-		SignupStep2.Step2_Payment_Information(prop.getProperty("bank_account"),prop.getProperty("confirm_bank_account"),
-			prop.getProperty("bank_routing"),prop.getProperty("confirm_bank_routing"),prop.getProperty("director_dob"),prop.getProperty("director_last_4_ssn"),
-			prop.getProperty("name_bank_account"));
-}*/
 	
 }

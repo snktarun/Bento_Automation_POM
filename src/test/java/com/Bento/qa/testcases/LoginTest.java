@@ -11,9 +11,9 @@ import com.Bento.qa.pages.LoginPage;
 public class LoginTest extends TestBase {
 	LoginPage loginPage;
 	
-	public LoginTest() {
+	/*public LoginTest() {
 		super();
-	}
+	}*/
 	
 	@BeforeMethod
 	public void setUp() throws InterruptedException {

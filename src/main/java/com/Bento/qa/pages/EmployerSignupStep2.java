@@ -1,6 +1,7 @@
 package com.Bento.qa.pages;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.Bento.qa.base.TestBase;
 
@@ -27,6 +29,7 @@ public class EmployerSignupStep2 extends TestBase {
 	@FindBy(xpath = "//button[contains(@type,'button')]")
 	WebElement signinbtn;
 	
+	//Step - 3
 //	Payment Account Information :
 	//Bank Account
 	@FindBy(xpath="//input[contains(@id,'account_number')]")
@@ -61,23 +64,31 @@ public class EmployerSignupStep2 extends TestBase {
 	@FindBy(xpath="//div[@class='appTheme']/button")
 	WebElement nextbutton;
 	
+	//Step -4
+//select plans	
+	@FindBy(xpath ="//div[@class='warper']/div[2]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/button")
+	WebElement plan_dropdown;
+	
    public void employerlogin(String empid,String pwd) {
 		employeeid.sendKeys(empid);
 		password.sendKeys(pwd);
 		signinbtn.click();
 	}
 	
-	public void Step2_Payment_Information(String bank_account,String confirm_bank_account,
+  
+   
+	public void Step3_Payment_Information(String bank_account,String confirm_bank_account,
 			String bank_routing,String confirm_bank_routing,
 			String name_bank_account,String Account_holder_name,
 			String date_of_birth,String tax_id)throws InterruptedException, IOException
 	{
+		Thread.sleep(2000);
 		bankaccount.sendKeys(bank_account);
 		Thread.sleep(2000);
 		confirmbankaccount.sendKeys(confirm_bank_account);
 		Thread.sleep(2000);
 		bankrouting.sendKeys(bank_routing);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		confirmbankrouting.sendKeys(confirm_bank_routing);
 		Thread.sleep(1000);
 		bankaccountname.sendKeys(name_bank_account);
@@ -96,9 +107,18 @@ public class EmployerSignupStep2 extends TestBase {
 		Thread.sleep(2000);
 		//click Next button
 		nextbutton.click();
-		Thread.sleep(2000);
-		
+		Thread.sleep(2000);		
 			}
 	
+	public void step4_select_plans() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		plan_dropdown.click();
+		Select selectplan = new Select(plan_dropdown);
+	
+		selectplan.selectByValue("Custom Plan");
+		
+	
+	}
 	
 }
