@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -65,31 +66,69 @@ public class EmployerSignupStep2 extends TestBase {
 	WebElement nextbutton;
 	
 	//Step -4
-//select plans	
-	@FindBy(xpath ="//div[@class='warper']/div[2]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/button")
-	WebElement plan_dropdown;
+	//Drop down
+	/*@FindBy(xpath="//div[contains(@id,'ChoosePlanType')]/div[1]/div[2]")
+	WebElement drop_down;
 	
-   public void employerlogin(String empid,String pwd) {
+	//select plans 
+	@FindBy(xpath="//span[@role='menuitem']")
+	WebElement select_plans;
+	
+	//select plan - Standard Plans
+		@FindBy(xpath="//span[@role='menuitem']/div[1]/div[1]/div[text()='Standard Plans']")
+		WebElement standard_plans;
+		
+		//select plan - Custom Plan
+		@FindBy(xpath="//span[@role='menuitem']/div[1]/div[1]/div[text()='Standard Plans']")
+		WebElement Custom_Plan;*/
+	
+	//Drop down element
+	@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[1]/div/div/p")
+	WebElement drop_down;
+	
+	@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[1]/div/input")
+	WebElement platinum_Network;
+	
+	@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[2]/div/div[2]/div[1]/div[6]/div[1]/div[1]/div/input")
+	WebElement Gold_Network;
+	
+	@FindBy(xpath="//div[@class='planView']/div[6]/div[2]/div[1]/div[1]/input[@type='text']")
+	WebElement gold_custom_annual_max;
+	
+	@FindBy(xpath="//div[@class='planView']/div[6]/div[2]/div[2]/div[1]/input[@type='text']")
+	WebElement Gold_Custom_Ortho;
+	
+	@FindBy(xpath="//div[@class='planView']/div[6]/div[2]/div[3]/div[1]/input[@type='text']")
+	WebElement Gold_Custom_Adult_Ortho;
+	
+	@FindBy(xpath="//div[@class='planView']/div[2]/div[2]/div[1]/div[1]//input[@type='text']")
+	WebElement platinum_custom_annual_max;
+	
+	@FindBy(xpath="//div[@class='planView']/div[2]/div[2]/div[2]/div[1]//input[@type='text']")
+	WebElement Platinum_Custom_Ortho;
+	
+	@FindBy(xpath = "//div[@class='planView']/div[2]/div[2]/div[3]/div[1]//input[@type='text']")
+	WebElement Platinum_Custom_Adult_Ortho;
+
+	public void employerlogin(String empid,String pwd) {
 		employeeid.sendKeys(empid);
 		password.sendKeys(pwd);
 		signinbtn.click();
 	}
 	
-  
-   
-	public void Step3_Payment_Information(String bank_account,String confirm_bank_account,
+  	public void Step3_Payment_Information(String bank_account,String confirm_bank_account,
 			String bank_routing,String confirm_bank_routing,
 			String name_bank_account,String Account_holder_name,
 			String date_of_birth,String tax_id)throws InterruptedException, IOException
 	{
+		Thread.sleep(4000);
+		bankrouting.sendKeys(bank_routing);
+		Thread.sleep(2000);
+		confirmbankrouting.sendKeys(confirm_bank_routing);
 		Thread.sleep(2000);
 		bankaccount.sendKeys(bank_account);
 		Thread.sleep(2000);
 		confirmbankaccount.sendKeys(confirm_bank_account);
-		Thread.sleep(2000);
-		bankrouting.sendKeys(bank_routing);
-		Thread.sleep(2000);
-		confirmbankrouting.sendKeys(confirm_bank_routing);
 		Thread.sleep(1000);
 		bankaccountname.sendKeys(name_bank_account);
 		Thread.sleep(2000);
@@ -110,15 +149,47 @@ public class EmployerSignupStep2 extends TestBase {
 		Thread.sleep(2000);		
 			}
 	
-	public void step4_select_plans() throws InterruptedException
+	public void step4_select_plans(String PlatinumAnnualMax,String PlatinumCustomOrtho,
+			String PlatinumAdultCustomOrtho,String GoldAnnualMax,
+			String GoldAdultCustomOrtho,String GoldCustomOrtho) throws InterruptedException
 	{
 		Thread.sleep(2000);
-		plan_dropdown.click();
-		Select selectplan = new Select(plan_dropdown);
 	
-		selectplan.selectByValue("Custom Plan");
+		/*drop_down.getText();
 		
+		Actions act = new Actions(driver);
+		act.sendKeys(Keys.TAB, Keys.ENTER, Keys.ENTER).build().perform();
+		Thread.sleep(4000);*/
+		System.out.println("Test123");
+		
+		platinum_Network.click();
+		Gold_Network.click();	
+		Thread.sleep(4000);
+		System.out.println("Test456");
+		
+	
+		platinum_custom_annual_max.sendKeys(PlatinumAnnualMax);
+		Platinum_Custom_Ortho.sendKeys(PlatinumCustomOrtho);
+		Platinum_Custom_Adult_Ortho.sendKeys(PlatinumAdultCustomOrtho);
+		
+		gold_custom_annual_max.sendKeys(GoldAnnualMax);
+		Gold_Custom_Ortho.sendKeys(GoldCustomOrtho);
+		Gold_Custom_Adult_Ortho.sendKeys(GoldAdultCustomOrtho);
+		}
 	
 	}
 	
-}
+/*List <WebElement> list_of_elements = driver.findElements(By.xpath("//span[@role='menuitem']"));
+int list_size=list_of_elements.size();
+for(int i=1;i<=list_size;i++)
+{
+	WebElement element = list_of_elements.get(i);
+	String text = element.getAttribute("name");
+	
+	if(text.equalsIgnoreCase("Custom Plan"))
+	{
+		System.out.println("identified link");
+		element.click();
+		break;
+		
+	}*/

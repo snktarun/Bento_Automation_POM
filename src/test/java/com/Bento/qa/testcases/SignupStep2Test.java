@@ -22,9 +22,8 @@ public class SignupStep2Test extends TestBase{
 	public void setUp() throws InterruptedException {
 		initialization(); // Call initialization method from testBase class
 		SignupStep2 = new EmployerSignupStep2();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		}
-	
 	
 	@Test(priority = 0)
 	 public void LoginStep2WithValidPassword() throws InterruptedException, IOException {
@@ -34,15 +33,18 @@ public class SignupStep2Test extends TestBase{
 		System.out.println("successfully login");
 		
 		SignupStep2.employerlogin(prop.getProperty("empid"),prop.getProperty("pwd"));
-		Thread.sleep(5000);
+		Thread.sleep(2000);
+		
 		System.out.println("payment bank information");
 		/*SignupStep2.Step3_Payment_Information(prop.getProperty("bank_account"),prop.getProperty("confirm_bank_account"),
 				prop.getProperty("bank_routing"),prop.getProperty("confirm_bank_routing"),prop.getProperty("Bank_name"),
 				prop.getProperty("Account_holder_name"),prop.getProperty("date_of_birth"),prop.getProperty("tax_id"));
 		*/
-		SignupStep2.step4_select_plans();
+		Thread.sleep(3000);
+		SignupStep2.step4_select_plans(prop.getProperty("GoldAnnualMax"),prop.getProperty("GoldCustomOrtho"),prop.getProperty("GoldAdultCustomOrtho"),
+				prop.getProperty("PlatinumAnnualMax"),prop.getProperty("PlatinumAdultCustomOrtho"),
+				prop.getProperty("Platinum_Custom_Ortho"));
 		
-			}
-
-	
+		
+		}
 }
