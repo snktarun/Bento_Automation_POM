@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,6 +16,8 @@ import org.openqa.selenium.support.ui.Select;
 import com.Bento.qa.base.TestBase;
 
 public class EmployerSignupStep2 extends TestBase {
+
+	private static final org.openqa.selenium.interactions.Action New = null;
 
 	public EmployerSignupStep2() {
 		PageFactory.initElements(driver, this);
@@ -109,7 +112,35 @@ public class EmployerSignupStep2 extends TestBase {
 	
 	@FindBy(xpath = "//div[@class='planView']/div[2]/div[2]/div[3]/div[1]//input[@type='text']")
 	WebElement Platinum_Custom_Adult_Ortho;
+	
+	@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[2]/div/div[2]/div[2]/div/button/div/div")
+	WebElement step4_next_button;
 
+	//Step -5 Enroll Dates 
+	@FindBy(xpath="//*[@id='form_view']/form/div[1]/h4[1]")
+	WebElement Initial_Enroll_header;
+	
+	@FindBy(xpath="//div[@id='form_view']/form/div[1]/div[1]/div[1]/div[1]/div[1]/input")
+	WebElement Initial_open_enrollment_period_from_date;
+	
+	@FindBy(xpath="//div[@id='form_view']/form/div[1]/div[1]/div[2]/div[1]/div[1]/input")
+	WebElement Initial_open_enrollment_period_to_date;
+	
+	@FindBy(xpath="//div[@id='form_view']/form/div[1]/div[2]/div[1]/div[1]/div[1]/input")
+	WebElement Initial_coverage_period_from_date;
+	
+	@FindBy(xpath="//div[@id='form_view']/form/div[1]/div[3]/div[1]/div[1]/div[1]/input")
+	WebElement Re_enrollment_open_enrollment_start_date;
+	
+	@FindBy(xpath="//div[@id='form_view']/form/div[1]/div[3]/div[2]/div[1]/div[1]/input")
+	WebElement Re_enrollment_open_enrollment_to_date;
+	
+	@FindBy(xpath="//div[@id='form_view']/form/div[1]/div[5]/div[1]/div[1]/div[1]/input")
+	WebElement Re_enrollment_plan_switch_date; 
+	
+	@FindBy(xpath="//*[@id='form_view']/form/div[2]/div/button/div/div")
+	WebElement submit_button;
+	
 	public void employerlogin(String empid,String pwd) {
 		employeeid.sendKeys(empid);
 		password.sendKeys(pwd);
@@ -146,37 +177,82 @@ public class EmployerSignupStep2 extends TestBase {
 		Thread.sleep(2000);
 		//click Next button
 		nextbutton.click();
-		Thread.sleep(2000);		
+		Thread.sleep(5000);		
 			}
 	
-	public void step4_select_plans(String PlatinumAnnualMax,String PlatinumCustomOrtho,
-			String PlatinumAdultCustomOrtho,String GoldAnnualMax,
-			String GoldAdultCustomOrtho,String GoldCustomOrtho) throws InterruptedException
+	public void step4_select_plans(String PlatinumAnnualMax,String PlatinumAdultCustomOrtho,String GoldCustomOrtho) throws InterruptedException
 	{
 		Thread.sleep(2000);
+		
+		/*,String PlatinumCustomOrtho,
+		String PlatinumAdultCustomOrtho,String GoldAnnualMax,
+		String GoldAdultCustomOrtho,*/
 	
 		/*drop_down.getText();
 		
 		Actions act = new Actions(driver);
 		act.sendKeys(Keys.TAB, Keys.ENTER, Keys.ENTER).build().perform();
 		Thread.sleep(4000);*/
+		
 		System.out.println("Test123");
 		
 		platinum_Network.click();
 		Gold_Network.click();	
-		Thread.sleep(4000);
+		Thread.sleep(1000);
 		System.out.println("Test456");
 		
-	
-		platinum_custom_annual_max.sendKeys(PlatinumAnnualMax);
+		/*
+		
 		Platinum_Custom_Ortho.sendKeys(PlatinumCustomOrtho);
-		Platinum_Custom_Adult_Ortho.sendKeys(PlatinumAdultCustomOrtho);
+		Thread.sleep(2000);
 		
 		gold_custom_annual_max.sendKeys(GoldAnnualMax);
-		Gold_Custom_Ortho.sendKeys(GoldCustomOrtho);
+		Thread.sleep(2000);
 		Gold_Custom_Adult_Ortho.sendKeys(GoldAdultCustomOrtho);
-		}
+		Thread.sleep(2000);*/
+		platinum_custom_annual_max.sendKeys(PlatinumAnnualMax);
+		Thread.sleep(2000);
+		Platinum_Custom_Adult_Ortho.sendKeys(PlatinumAdultCustomOrtho);
+		Thread.sleep(2000);
+		Gold_Custom_Ortho.sendKeys(GoldCustomOrtho);
+		Thread.sleep(2000);
+		step4_next_button.click();
+	}
 	
+	public void step5_enrol_dates(String InitialOpenEnrollmentPeriodFromDate,
+			String InitialOpenEnrollmentPeriodToDate,
+			String InitialCoveragePeriodFromDate,String Re_enrollmentOpenEnrollmentStartDate,
+			String Re_enrollmentOpenEnrollmentToDate,String Re_enrollmentPlanSwitchDate) throws InterruptedException
+	{
+		String abc = Initial_Enroll_header.getText();
+		if(abc.equalsIgnoreCase("Initial Enrollment"))
+		{
+		System.out.println("Identified text is same as expected");
+			}
+		else
+		{
+			System.out.println("Identified text is not same as expected");
+		}
+		
+		/*Actions act_tab = new Actions(driver);
+		
+		act_tab.sendKeys(Keys.TAB,Keys.ENTER);*/
+		Thread.sleep(2000);
+		Initial_open_enrollment_period_from_date.sendKeys(InitialOpenEnrollmentPeriodFromDate);
+		Thread.sleep(2000);
+		Initial_open_enrollment_period_to_date.sendKeys(InitialOpenEnrollmentPeriodToDate);
+		Thread.sleep(2000);
+		Initial_coverage_period_from_date.sendKeys(InitialCoveragePeriodFromDate);
+		Thread.sleep(2000);
+		Re_enrollment_open_enrollment_start_date.sendKeys(Re_enrollmentOpenEnrollmentStartDate);
+		Thread.sleep(2000);
+		Re_enrollment_open_enrollment_to_date.sendKeys(Re_enrollmentOpenEnrollmentToDate);
+		Thread.sleep(2000);
+		Re_enrollment_plan_switch_date.sendKeys(Re_enrollmentPlanSwitchDate);
+		Thread.sleep(2000);
+		submit_button.click();
+		Thread.sleep(2000);
+	}
 	}
 	
 /*List <WebElement> list_of_elements = driver.findElements(By.xpath("//span[@role='menuitem']"));
@@ -184,6 +260,7 @@ int list_size=list_of_elements.size();
 for(int i=1;i<=list_size;i++)
 {
 	WebElement element = list_of_elements.get(i);
+	
 	String text = element.getAttribute("name");
 	
 	if(text.equalsIgnoreCase("Custom Plan"))
