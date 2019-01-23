@@ -105,7 +105,7 @@ public class ReimbursementPage extends TestBase{
 	@FindBy(xpath="//input[contains(@id,'owner_director_last4_ssn')]")
 	WebElement directorlast4ssn ;
 	
-	@FindBy(xpath="//input[contains(@id,name_on_account')]")
+	@FindBy(xpath="//input[contains(@id,'name_on_account')]")
 	WebElement namebankaccount ;
 	
 	@FindBy(xpath="//input[contains(@id,'account_number')]")

@@ -30,7 +30,10 @@ public class LoginPage extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 	
+	
 	public void employerlogin(String empid,String pwd) {
+		//employeeid.sendKeys(TestBase.cell.getStringCellValue());
+		
 		employeeid.sendKeys(empid);
 		password.sendKeys(pwd);
 		signinbtn.click();

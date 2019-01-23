@@ -29,7 +29,11 @@ public void signuplink_click() throws InterruptedException
 {
 	
 	empsignup.new_signup_click();
-	empsignup.companydetails(prop.getProperty("CompanyName"),prop.getProperty("CompanyAddress1"),prop.getProperty("CompanyAddress2"),prop.getProperty("CityName"),prop.getProperty("State"),prop.getProperty("ZipCode"),prop.getProperty("FirstName"),prop.getProperty("LastName"),prop.getProperty("MiddleName"),prop.getProperty("Email"),prop.getProperty("PhoneNumber"));
+	empsignup.companydetails(prop.getProperty("CompanyName"),
+			prop.getProperty("CompanyAddress1"),prop.getProperty("CompanyAddress2"),
+			prop.getProperty("CityName"),prop.getProperty("State"),prop.getProperty("ZipCode"),
+			prop.getProperty("FirstName"),prop.getProperty("LastName"),prop.getProperty("MiddleName"),
+			prop.getProperty("Email"),prop.getProperty("PhoneNumber"));
 
 	empsignup.clickcheckbox();
 	empsignup.signup_button();
