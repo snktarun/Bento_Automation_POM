@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10327" started-at="2019-01-23T10:49:39Z" finished-at="2019-01-23T10:49:50Z">
+  <suite name="Default suite" duration-ms="28818" started-at="2019-01-24T14:25:02Z" finished-at="2019-01-24T14:25:31Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10327" started-at="2019-01-23T10:49:39Z" finished-at="2019-01-23T10:49:50Z">
-      <class name="com.Bento.qa.testcases.AdmiLoginTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.Bento.qa.testcases.AdmiLoginTest@26653222]" name="setup" is-config="true" duration-ms="9890" started-at="2019-01-23T16:19:39Z" finished-at="2019-01-23T16:19:49Z">
+    <test name="Default test" duration-ms="28818" started-at="2019-01-24T14:25:02Z" finished-at="2019-01-24T14:25:31Z">
+      <class name="com.Bento.qa.testcases.LoginTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.Bento.qa.testcases.LoginTest@26653222]" name="setUp" is-config="true" duration-ms="23300" started-at="2019-01-24T19:55:02Z" finished-at="2019-01-24T19:55:25Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="logintest()[pri:0, instance:com.Bento.qa.testcases.AdmiLoginTest@26653222]" name="logintest" duration-ms="406" started-at="2019-01-23T16:19:49Z" finished-at="2019-01-23T16:19:50Z">
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="loginWithvalidPassword()[pri:0, instance:com.Bento.qa.testcases.LoginTest@26653222]" name="loginWithvalidPassword" duration-ms="5484" started-at="2019-01-24T19:55:25Z" finished-at="2019-01-24T19:55:31Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- logintest -->
-      </class> <!-- com.Bento.qa.testcases.AdmiLoginTest -->
+        </test-method> <!-- loginWithvalidPassword -->
+      </class> <!-- com.Bento.qa.testcases.LoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

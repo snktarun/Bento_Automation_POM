@@ -21,7 +21,7 @@ public class AdmiLoginTest extends TestBase {
 	public void logintest() throws InterruptedException
 	{
 		System.out.println("admin login successfully");
-		admin.adminsignin(prop.getProperty("UserName"),prop.getProperty("Password"));
+		admin.adminsignin(prop.getProperty("UserName"),prop.getProperty("Password"),prop.getProperty("identifytext"));
 		
 	}
 
