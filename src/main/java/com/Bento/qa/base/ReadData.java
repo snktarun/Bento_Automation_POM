@@ -22,16 +22,18 @@ public class ReadData {
 		HSSFWorkbook wb = new HSSFWorkbook(fileload);
 		HSSFSheet sh = wb.getSheet("data");
 		System.out.println(sh.getLastRowNum());
-		for(int i=0;i<=sh.getLastRowNum();i++)
+		for(int i=1;i<=sh.getLastRowNum();i++)
 		{
 			Cell celldata =sh.getRow(i).getCell(0);
 			String cellvalue = celldata.getStringCellValue();
 			if (cellvalue.equalsIgnoreCase("empid")){
-				System.out.println(sh.getRow(i+1).getCell(0).getNumericCellValue());
+				System.out.println(sh.getRow(i).getCell(0).getNumericCellValue());
 			}
 					
 			System.out.println(celldata);	
 		}
+		
+		
 
 		}catch(Exception e){
 			System.out.println(e);

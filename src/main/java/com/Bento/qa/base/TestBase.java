@@ -25,8 +25,7 @@ public class TestBase {
 	/*public static HSSFWorkbook workbook;
 	public static HSSFSheet sheet;
 	public static HSSFCell cell;*/
-	
-	
+		
 	//Contructor method to initialize config.properties
 	public TestBase(){
 		try {
@@ -42,38 +41,8 @@ public class TestBase {
 		}
 	}
 	
-	/*public void TestBase() 
-	{
-		try{
-			//finding the file location
-			File src = new File("home/tarun/workspace1/HelloWorldWork/Bento_Automation/Resources/Bento_Data.xls");
-		//load the file 
-			FileInputStream load_file = new FileInputStream(src);
-		}catch(FileNotFoundException x){
-		x.printStackTrace();
-		}catch(Exception x1){
-			x1.printStackTrace();
-		}
-		//load the workbook
-		workbook = new HSSFWorkbook();
-		
-		//load the sheet
-		sheet = workbook.getSheetAt(0);
-		
-		for(int i=2;i<sheet.getLastRowNum();i++)
-		{
-			
-			cell = sheet.getRow(i).getCell(1);
-		    cell.setCellType(cell.getCellType());
-			String abc = cell.getStringCellValue();
-		
-		}
-		
-		*/
-
-	
 	//initialization of browsers and handle multiple windows
-	public static void initialization() throws InterruptedException {
+	public static void initialization(String page) throws InterruptedException {
 		
 		String browserName = prop.getProperty("browser");//Read the browser property in config.properties file
 		
@@ -92,12 +61,20 @@ public class TestBase {
 			driver = new FirefoxDriver();
 			
 			driver.manage().window().maximize();
-			
-		}	
+			}	
 		
 		driver.manage().deleteAllCookies();
-		
-		driver.get(prop.getProperty("url3"));
+		String url = null;
+		if(page.equalsIgnoreCase("Admin")){
+			url = prop.getProperty("AdminURL");
+		} else if(page.equalsIgnoreCase("Employer")){
+			url = prop.getProperty("EmployerURL");
+		}
+		else {
+			
+			url = prop.getProperty("ReimbursementUrl");
+		}
+		driver.get(url);
 		
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		
