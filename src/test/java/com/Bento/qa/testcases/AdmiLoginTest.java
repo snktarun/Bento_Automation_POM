@@ -11,7 +11,8 @@ public class AdmiLoginTest extends TestBase {
 	@BeforeMethod
 	public void setup() throws InterruptedException
 	{
-		initialization();
+		initialization("Admin");
+		
 	 admin = new AdminPortalPage();
 	Thread.sleep(2000);
 		
@@ -22,7 +23,10 @@ public class AdmiLoginTest extends TestBase {
 	{
 		System.out.println("admin login successfully");
 		admin.adminsignin(prop.getProperty("UserName"),prop.getProperty("Password"),prop.getProperty("identifytext"));
+		//admin.method1();
+		admin.quitwindow();
 		
 	}
+	
 
 }

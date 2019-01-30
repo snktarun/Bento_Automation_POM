@@ -20,7 +20,9 @@ public class AdminPortalPage extends TestBase {
 	@FindBy(xpath = "//button[@data-route='/Employers']") WebElement Employers;
 	@FindBy(xpath = "//div[@class = 'home-layout']/div[1]/div[1]/div[1]/div[1]/div[1]/h2") WebElement pendingemptext;
 	@FindBy(xpath = "//div[@class = 'home-layout']/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/table/tbody/tr/td[6]/div/button") WebElement review;
-		
+	@FindBy(xpath = "//div[@id='root']/following-sibling::div[2]/div/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]") WebElement statusdropdwon;	
+	
+	
 	public AdminPortalPage() {
 		PageFactory.initElements(driver, this);
 	}
@@ -51,10 +53,14 @@ public class AdminPortalPage extends TestBase {
 		}
 		Thread.sleep(2000);
 		review.click();
+		statusdropdwon.click();
+		statusdropdwon.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+	}
 		
-		
-		
+		/*public void method1() 
+		{
 		String mainwindow = driver.getWindowHandle();
+		
 		Set <String> set = driver.getWindowHandles();
 		
 	Iterator<String> ite = set.iterator();
@@ -62,24 +68,21 @@ public class AdminPortalPage extends TestBase {
 	while(ite.hasNext())
 	{
 		System.out.println(ite.next());
+		
 		String childwindow = ite.next();
+		
 		if(!mainwindow.equals(childwindow))
 		{
+			System.out.println("opened window");
 			driver.switchTo().window(childwindow);
 			System.out.println(driver.switchTo().window(childwindow).getTitle());
-			
+			System.out.println("opened window2314234");
 		}
-	}
+	}	
 	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
+		}*/
+		public void quitwindow()
+		{
+			driver.quit();
+		}
 }
