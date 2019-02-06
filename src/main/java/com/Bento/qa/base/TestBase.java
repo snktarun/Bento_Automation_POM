@@ -54,6 +54,8 @@ public class TestBase {
 			
 			driver.manage().window().fullscreen();
 			
+			 driver.navigate().refresh();
+			
 		}else if(browserName.equalsIgnoreCase("firefox")) {
 			
 			System.setProperty("webdriver.gecko.driver", "/home/tarun/workspace1/HelloWorldWork/Bento_Automation/Resources/geckodriver");
@@ -69,6 +71,9 @@ public class TestBase {
 			url = prop.getProperty("AdminURL");
 		} else if(page.equalsIgnoreCase("Employer")){
 			url = prop.getProperty("EmployerURL");
+		}
+		else if(page.equalsIgnoreCase("tv")){
+			url = prop.getProperty("tvurl");
 		}
 		else {
 			

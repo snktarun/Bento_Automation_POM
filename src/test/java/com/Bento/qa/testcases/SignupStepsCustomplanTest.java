@@ -3,27 +3,26 @@ package com.Bento.qa.testcases;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.Bento.qa.base.TestBase;
-import com.Bento.qa.pages.EmployerSignupStepsPages;
-import com.Bento.qa.pages.LoginPage;
+import com.Bento.qa.pages.EmployerSignupStepsCustomplan;
+
 import com.Bento.qa.util.TestUtil;
 
-public class SignupStepsTest extends TestBase{
+public class SignupStepsCustomplanTest extends TestBase{
 	
-	public SignupStepsTest() {
+	public SignupStepsCustomplanTest() {
 		super();
 	}
 	
-	EmployerSignupStepsPages SignupSteps;
+	EmployerSignupStepsCustomplan SignupSteps;
 	
 	@BeforeMethod
 	public void setUp() throws InterruptedException {
 		initialization("Employer"); // Call initialization method from testBase class
-		SignupSteps = new EmployerSignupStepsPages();
+		SignupSteps = new EmployerSignupStepsCustomplan();
 		//Thread.sleep(2000);
 		}
 	
@@ -35,21 +34,19 @@ public class SignupStepsTest extends TestBase{
 		SignupSteps.employerlogin(prop.getProperty("empid"),prop.getProperty("pwd"));
 		System.out.println("successfully login");
 		Thread.sleep(4000);
-		
-		//Step-3
+	   /* //Step-3
 		SignupSteps.Step3_Payment_Information(prop.getProperty("bank_account"),prop.getProperty("confirm_bank_account"),
 				prop.getProperty("bank_routing"),prop.getProperty("confirm_bank_routing"),prop.getProperty("Bank_name"),
 				prop.getProperty("Account_holder_name"),prop.getProperty("date_of_birth"),prop.getProperty("tax_id"));
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-		System.out.println("payment bank information filled successfully");
-		
+		System.out.println("payment bank information filled successfully");*/
 		
 		//Step-4
-		SignupSteps.step4_select_plans(prop.getProperty("PlatinumAnnualMax"),prop.getProperty("PlatinumAdultCustomOrtho"),
-		                        		prop.getProperty("GoldCustomOrtho"));
-		System.out.println("step-4 info");
-	
+		SignupSteps.step4_select_plans(prop.getProperty("AddAmount"),prop.getProperty("OrthoAmount"),prop.getProperty("AdultAmount"));
+		Thread.sleep(2000);	
+		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+		System.out.println("custom plan fields filled successfully");
 		
 		//Step -5
 		SignupSteps.step5_enrol_dates(prop.getProperty("InitialOpenEnrollmentPeriodFromDate"),
@@ -60,3 +57,4 @@ public class SignupStepsTest extends TestBase{
 				prop.getProperty("Re_enrollmentPlanSwitchDate"));
 				}
 }
+

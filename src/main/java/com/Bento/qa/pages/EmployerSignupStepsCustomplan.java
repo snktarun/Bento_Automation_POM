@@ -1,25 +1,20 @@
 package com.Bento.qa.pages;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import com.Bento.qa.base.TestBase;
 
-public class EmployerSignupStepsPages extends TestBase {
+public class EmployerSignupStepsCustomplan extends TestBase {
 
 	
 
-	public EmployerSignupStepsPages() {
+	public EmployerSignupStepsCustomplan() {
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -69,53 +64,58 @@ public class EmployerSignupStepsPages extends TestBase {
 	WebElement nextbutton;
 	
 	//Step -4
-	//Drop down
-	/*@FindBy(xpath="//div[contains(@id,'ChoosePlanType')]/div[1]/div[2]")
-	WebElement drop_down;
-	
-	//select plans 
-	@FindBy(xpath="//span[@role='menuitem']")
-	WebElement select_plans;
-	
-	//select plan - Standard Plans
-		@FindBy(xpath="//span[@role='menuitem']/div[1]/div[1]/div[text()='Standard Plans']")
-		WebElement standard_plans;
-		
-		//select plan - Custom Plan
-		@FindBy(xpath="//span[@role='menuitem']/div[1]/div[1]/div[text()='Standard Plans']")
-		WebElement Custom_Plan;*/
 	
 	//Drop down element
-	@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[1]/div/div/p")
-	WebElement drop_down;
+		@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")
+		WebElement drop_down;
+		
+	//select plan - Custom Plans
+	@FindBy(xpath = "//div[@id='root']/following-sibling::div[3]/div[1]/div[1]/div[1]/div[2]/span") 
+	WebElement customplan;
 	
-	@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[1]/div/input")
-	WebElement platinum_Network;
+	//Customize Benifits:
+	//cleaning per 12 months
+	@FindBy(xpath="//div[@class='padL15']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]") 
+	WebElement cleaning12m;
 	
-	@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[2]/div/div[2]/div[1]/div[6]/div[1]/div[1]/div/input")
-	WebElement Gold_Network;
+	@FindBy(xpath="//div[@id='root']/following-sibling::div[2]/div[1]/div[1]/div[1]/div[2]/span")
+	WebElement cleaning1;
 	
-	@FindBy(xpath="//div[@class='planView']/div[6]/div[2]/div[1]/div[1]/input[@type='text']")
-	WebElement gold_custom_annual_max;
+	//exam per 12 months
+		
+	@FindBy(xpath="//div[@class='padL15']/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]")
+	WebElement exam12m;
 	
-	@FindBy(xpath="//div[@class='planView']/div[6]/div[2]/div[2]/div[1]/input[@type='text']")
-	WebElement Gold_Custom_Ortho;
+	@FindBy(xpath="//div[@id='root']/following-sibling::div[2]/div[1]/div[1]/div[1]/div[3]/span")
+	WebElement exam1;
 	
-	@FindBy(xpath="//div[@class='planView']/div[6]/div[2]/div[3]/div[1]/input[@type='text']")
-	WebElement Gold_Custom_Adult_Ortho;
+	//bitewing per 12 months
+	@FindBy(xpath ="//div[@class='padL15']/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]")
+	WebElement bitewing;
 	
-	@FindBy(xpath="//div[@class='planView']/div[2]/div[2]/div[1]/div[1]//input[@type='text']")
-	WebElement platinum_custom_annual_max;
+	//Additional fixed amount
+	@FindBy(xpath ="//input[contains(@name,'additionalFixedAmount')]")
+	WebElement addamount;
 	
-	@FindBy(xpath="//div[@class='planView']/div[2]/div[2]/div[2]/div[1]//input[@type='text']")
-	WebElement Platinum_Custom_Ortho;
+	//Standard ortho benefit
+	@FindBy(xpath="//input[contains(@name,'StandardAmount')]")
+	WebElement orthoamount;
 	
-	@FindBy(xpath = "//div[@class='planView']/div[2]/div[2]/div[3]/div[1]//input[@type='text']")
-	WebElement Platinum_Custom_Adult_Ortho;
-	
+	//Adult ortho benefit
+	@FindBy(xpath="//input[contains(@name,'AdultAmount')]")
+	WebElement adultamount;
+		
+		//platinum doctor accesss
+		@FindBy(xpath="//div[@id='root'] /div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/input")
+	WebElement platinumdocaccess;
+		
+		//Next buton
 	@FindBy(xpath="//*[@id='root']/div/div[2]/div[3]/div/div[1]/div/div[2]/div/div[2]/div[2]/div/button/div/div")
 	WebElement step4_next_button;
 
+	
+	
+	
 	//Step -5 Enroll Dates 
 	@FindBy(xpath="//*[@id='form_view']/form/div[1]/h4[1]")
 	WebElement Initial_Enroll_header;
@@ -180,32 +180,32 @@ public class EmployerSignupStepsPages extends TestBase {
 		Thread.sleep(5000);		
 			}
 	
-	public void step4_select_plans(String PlatinumAnnualMax,String PlatinumAdultCustomOrtho,String GoldCustomOrtho) throws InterruptedException
+	public void step4_select_plans(String AddAmount,String OrthoAmount,String AdultAmount) throws InterruptedException
 	{
-		Thread.sleep(2000);
-		
-		System.out.println("Test123");
-		
-		platinum_Network.click();
-		Gold_Network.click();	
+		/*Thread.sleep(1000);
+		drop_down.click();*/
+		System.out.println("custom plan entering");
 		Thread.sleep(1000);
-		System.out.println("Test456");
-		
-		/*
-		
-		Platinum_Custom_Ortho.sendKeys(PlatinumCustomOrtho);
-		Thread.sleep(2000);
-		
-		gold_custom_annual_max.sendKeys(GoldAnnualMax);
-		Thread.sleep(2000);
-		Gold_Custom_Adult_Ortho.sendKeys(GoldAdultCustomOrtho);
-		Thread.sleep(2000);*/
-		platinum_custom_annual_max.sendKeys(PlatinumAnnualMax);
-		Thread.sleep(2000);
-		Platinum_Custom_Adult_Ortho.sendKeys(PlatinumAdultCustomOrtho);
-		Thread.sleep(2000);
-		Gold_Custom_Ortho.sendKeys(GoldCustomOrtho);
-		Thread.sleep(2000);
+		customplan.click();
+		Thread.sleep(1000);
+		cleaning12m.click();
+		Thread.sleep(1000);
+		cleaning1.click();
+		Thread.sleep(1000);
+		exam12m.click();
+		Thread.sleep(1000);
+		exam1.click();
+		Thread.sleep(1000);
+		bitewing.click();
+		Thread.sleep(1000);
+		addamount.sendKeys("AddAmount");
+		Thread.sleep(1000);
+		orthoamount.sendKeys("OrthoAmount");
+		Thread.sleep(1000);
+		adultamount.sendKeys("AdultAmount");
+		Thread.sleep(1000);
+		platinumdocaccess.click();
+		Thread.sleep(1000);
 		step4_next_button.click();
 	}
 	
@@ -244,19 +244,3 @@ public class EmployerSignupStepsPages extends TestBase {
 		Thread.sleep(2000);
 	}
 	}
-	
-/*List <WebElement> list_of_elements = driver.findElements(By.xpath("//span[@role='menuitem']"));
-int list_size=list_of_elements.size();
-for(int i=1;i<=list_size;i++)
-{
-	WebElement element = list_of_elements.get(i);
-	
-	String text = element.getAttribute("name");
-	
-	if(text.equalsIgnoreCase("Custom Plan"))
-	{
-		System.out.println("identified link");
-		element.click();
-		break;
-		
-	}*/

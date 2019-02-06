@@ -19,7 +19,7 @@ public Empsignuptest()
 
 @BeforeMethod
 public void setUp() throws InterruptedException {
-	initialization(); // Call initialization method from testBase class
+	initialization("Employer"); // Call initialization method from testBase class
 	empsignup = new Employersignuppage();
 	Thread.sleep(2000);
 	}

@@ -17,7 +17,7 @@ public class LoginTest extends TestBase {
 	
 	@BeforeMethod
 	public void setUp() throws InterruptedException {
-		initialization(); // Call initialization method from testBase class
+		initialization("Employer"); // Call initialization method from testBase class
 		loginPage = new LoginPage();
 		Thread.sleep(2000);
 		}

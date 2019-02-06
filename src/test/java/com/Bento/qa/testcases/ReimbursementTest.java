@@ -18,7 +18,7 @@ public class ReimbursementTest extends TestBase{
 	
 	@BeforeMethod
 	public void setUp() throws InterruptedException {
-		initialization(); // Call initialization method from testBase class
+		initialization("reimbursement"); // Call initialization method from testBase class
 		reimbursement = new ReimbursementPage();
 		Thread.sleep(2000);
 		}	

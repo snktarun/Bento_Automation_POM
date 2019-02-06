@@ -1,0 +1,36 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">	
+
+<suite thread-count="1" verbose="1" name="Gmail Suite" annotations="JDK" parallel="tests">
+
+  <test name="AdminLogin">
+	 <classes>
+	   <class name="AdminLoginTest"/>
+	 </classes>
+   </test>
+   
+  <test name="Employer sign up">
+     <classes>
+       <class name="com.Bento.qa.testcases.Empsignuptest"/>
+     </classes>
+   </test>
+   
+     <test name="Employer login">
+     <classes>
+       <class name="com.Bento.qa.testcases.LoginTest"/>
+     </classes>
+   </test>
+   
+     <test name="Employer sign up steps">
+     <classes>
+       <class name="com.Bento.qa.testcases.SignupStepsTest"/>
+     </classes>
+   </test>
+   
+     <test name="Reimbursement">
+     <classes>
+       <class name="com.Bento.qa.testcases.ReimbursementTest"/>
+     </classes>
+   </test>
+   
+   
+</suite>
