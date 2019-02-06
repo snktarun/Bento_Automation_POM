@@ -75,6 +75,9 @@ public class TestBase {
 		else if(page.equalsIgnoreCase("tv")){
 			url = prop.getProperty("tvurl");
 		}
+		else if(page.equalsIgnoreCase("gmail")){
+	url = prop.getProperty("gmailurl");		
+	}
 		else {
 			
 			url = prop.getProperty("ReimbursementUrl");
