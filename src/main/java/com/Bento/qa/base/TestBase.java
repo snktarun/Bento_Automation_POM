@@ -22,6 +22,8 @@ import com.Bento.qa.util.TestUtil;
 public class TestBase {
 	public static WebDriver driver;
 	public static Properties prop;
+	public static String EmployerID;
+	public static String Password;
 	/*public static HSSFWorkbook workbook;
 	public static HSSFSheet sheet;
 	public static HSSFCell cell;*/

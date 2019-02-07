@@ -25,6 +25,5 @@ public class GmailTest extends TestBase {
 		gmailp.gmailsignin(prop.getProperty("Emailid"),prop.getProperty("Gmailpwd"));
 		
 	}
-	
-	
+
 }

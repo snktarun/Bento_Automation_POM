@@ -4,21 +4,42 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.Bento.qa.base.TestBase;
 import com.Bento.qa.pages.EmployerSignupStepsPages;
+import com.Bento.qa.pages.GmailPage;
 import com.Bento.qa.pages.LoginPage;
 import com.Bento.qa.util.TestUtil;
 
 public class SignupStepsTest extends TestBase{
 	
-	public SignupStepsTest() {
+/*	public SignupStepsTest() {
 		super();
-	}
+	}*/
 	
 	EmployerSignupStepsPages SignupSteps;
+	GmailPage gmailp;
+	
+	@BeforeTest
+	public void setup() throws InterruptedException
+	{
+		initialization("gmail");
+		
+		gmailp = new GmailPage();
+		Thread.sleep(2000);
+		
+		}
+	@BeforeClass
+	public void gmailsignintest()throws InterruptedException
+	{
+		System.out.println("gmail test done");
+		gmailp.gmailsignin(prop.getProperty("Emailid"),prop.getProperty("Gmailpwd"));
+		
+	}
 	
 	@BeforeMethod
 	public void setUp() throws InterruptedException {
@@ -32,7 +53,7 @@ public class SignupStepsTest extends TestBase{
 		 /*
 		  * Login with valid Password
 		  */
-		SignupSteps.employerlogin(prop.getProperty("empid"),prop.getProperty("pwd"));
+		SignupSteps.employerlogin(TestBase.EmployerID,TestBase.Password/*prop.getProperty("empid"),prop.getProperty("pwd")*/);
 		System.out.println("successfully login");
 		Thread.sleep(4000);
 		
