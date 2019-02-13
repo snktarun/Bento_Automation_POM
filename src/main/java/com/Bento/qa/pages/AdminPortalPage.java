@@ -17,16 +17,24 @@ import com.Bento.qa.util.TestUtil;
 
 public class AdminPortalPage extends TestBase {
 	
-	@FindBy(xpath = "//input[contains(@type,'text')]") WebElement username;
-	@FindBy(xpath = "//input[@type='password']") WebElement password;
-	@FindBy(xpath ="//button[@type='button']") WebElement signin;
-	@FindBy(xpath = "//button[@data-route='/Employers']") WebElement Employers;
-	@FindBy(xpath = "//div[@class = 'home-layout']/div[1]/div[1]/div[1]/div[1]/div[1]/h2") WebElement pendingemptext;
-	@FindBy(xpath = "//div[@class = 'home-layout']/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/table/tbody/tr/td[6]/div/button") WebElement review;
-	@FindBy(xpath = "//div[@id='root']/following-sibling::div[2]/div/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]") WebElement statusdropdwon;	
+	@FindBy(xpath = "//input[contains(@type,'text')]") 
+	WebElement username;
+	@FindBy(xpath = "//input[@type='password']")
+	WebElement password;
+	@FindBy(xpath ="//button[@type='button']")
+	WebElement signin;
+	@FindBy(xpath = "//button[@data-route='/Employers']") 
+	WebElement Employers;
+	@FindBy(xpath = "//div[@class = 'home-layout']/div[1]/div[1]/div[1]/div[1]/div[1]/h2") 
+	WebElement pendingemptext;
+	@FindBy(xpath = "//div[@class = 'home-layout']/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/table/tbody/tr/td[6]/div/button")
+	WebElement review;
+	@FindBy(xpath = "//div[@id='root']/following-sibling::div[2]/div/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]")
+	WebElement statusdropdwon;	
 	@FindBy(xpath = "//div[@role='menu']/div[2]/span") WebElement inactive;
 	@FindBy(xpath = "//div[@role='menu']/div[1]/span") WebElement active;
-	@FindBy(xpath = "//div[@id='root']/following-sibling::div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[9]/div[1]/div[1]/button") WebElement okbutton;
+	@FindBy(xpath = "//div[@id='root']/following-sibling::div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[9]/div[1]/div[1]/button/div[1]/div[1]")
+	WebElement okbutton;
 	
 	
 	
@@ -60,7 +68,9 @@ public class AdminPortalPage extends TestBase {
 		}
 		Thread.sleep(2000);
 		review.click();
+		Thread.sleep(2000);
 		statusdropdwon.click();
+		Thread.sleep(2000);
 		//inactive.click();
 		active.click();
 		/*String val = active.getText();
@@ -73,9 +83,13 @@ public class AdminPortalPage extends TestBase {
 			System.out.println("inactive button is selected");
 			
 		}*/
-		
+		Thread.sleep(2000);
 		okbutton.click();
 	
+	}
+	public void quitwindow()
+	{
+		driver.quit();
 	}
 		
 		/*public void method1() 
@@ -102,8 +116,5 @@ public class AdminPortalPage extends TestBase {
 	}	
 	
 		}*/
-		public void quitwindow()
-		{
-			driver.quit();
-		}
+		
 }

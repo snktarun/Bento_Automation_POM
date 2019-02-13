@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -22,38 +24,23 @@ public class SignupStepsTest extends TestBase{
 	}*/
 	
 	EmployerSignupStepsPages SignupSteps;
-	GmailPage gmailp;
 	
-	@BeforeTest
+	@BeforeMethod
 	public void setup() throws InterruptedException
 	{
-		initialization("gmail");
-		
-		gmailp = new GmailPage();
+		initialization("Employer");
+	
+	    
+		SignupSteps = new EmployerSignupStepsPages();
 		Thread.sleep(2000);
 		
 		}
-	@BeforeClass
-	public void gmailsignintest()throws InterruptedException
-	{
-		System.out.println("gmail test done");
-		gmailp.gmailsignin(prop.getProperty("Emailid"),prop.getProperty("Gmailpwd"));
 		
-	}
-	
-	@BeforeMethod
-	public void setUp() throws InterruptedException {
-		initialization("Employer"); // Call initialization method from testBase class
-		SignupSteps = new EmployerSignupStepsPages();
-		//Thread.sleep(2000);
-		}
-	
 	@Test(priority = 0)
 	 public void LoginStep2WithValidPassword() throws InterruptedException, IOException {
-		 /*
-		  * Login with valid Password
-		  */
-		SignupSteps.employerlogin(TestBase.EmployerID,TestBase.Password/*prop.getProperty("empid"),prop.getProperty("pwd")*/);
+		 // Login with valid Password
+		  
+		SignupSteps.employerlogin();
 		System.out.println("successfully login");
 		Thread.sleep(4000);
 		
@@ -71,7 +58,6 @@ public class SignupStepsTest extends TestBase{
 		                        		prop.getProperty("GoldCustomOrtho"));
 		System.out.println("step-4 info");
 	
-		
 		//Step -5
 		SignupSteps.step5_enrol_dates(prop.getProperty("InitialOpenEnrollmentPeriodFromDate"),
 				prop.getProperty("InitialOpenEnrollmentPeriodToDate"),

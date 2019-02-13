@@ -23,8 +23,7 @@ public class AdmiLoginTest extends TestBase {
 	{
 		System.out.println("admin login successfully");
 		admin.adminsignin(prop.getProperty("UserName"),prop.getProperty("Password"),prop.getProperty("identifytext"),prop.getProperty("dropdownval"));
-		//admin.method1();
-		//admin.quitwindow();
+		admin.quitwindow();
 		
 	}
 	

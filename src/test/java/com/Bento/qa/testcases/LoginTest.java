@@ -1,15 +1,24 @@
 package com.Bento.qa.testcases;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.Bento.qa.base.ReadData;
 import com.Bento.qa.base.TestBase;
 import com.Bento.qa.pages.LoginPage;
 
 public class LoginTest extends TestBase {
-	LoginPage loginPage;
+	static LoginPage loginPage;
 	
 	/*public LoginTest() {
 		super();
@@ -23,14 +32,17 @@ public class LoginTest extends TestBase {
 		}
 	
 	@Test
-	 public void loginWithvalidPassword() throws InterruptedException {
-		 /*
-		  * Login with valid Password
-		  */
+	 public void loginWithvalidPassword() throws InterruptedException, IOException {
+		 
+		  // Login with valid Password
+		  
 		System.out.println("successfully login");
-		loginPage.employerlogin(prop.getProperty("empid"),prop.getProperty("pwd"));
+		loginPage.employerlogin();
+						
 		Thread.sleep(5000);
 			}
+
+	}
 	
 //	 @Test(priority = 2)
 //	 public void loginWithInvalidPhoneNumber() throws InterruptedException {
@@ -140,4 +152,4 @@ public class LoginTest extends TestBase {
 //	public void tearDown() {
 //		driver.quit();
 //	}
-}
+

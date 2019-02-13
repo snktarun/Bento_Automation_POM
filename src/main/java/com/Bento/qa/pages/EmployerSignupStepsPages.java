@@ -1,8 +1,12 @@
 package com.Bento.qa.pages;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -16,8 +20,6 @@ import org.openqa.selenium.support.ui.Select;
 import com.Bento.qa.base.TestBase;
 
 public class EmployerSignupStepsPages extends TestBase {
-
-	
 
 	public EmployerSignupStepsPages() {
 		PageFactory.initElements(driver, this);
@@ -141,10 +143,27 @@ public class EmployerSignupStepsPages extends TestBase {
 	@FindBy(xpath="//*[@id='form_view']/form/div[2]/div/button/div/div")
 	WebElement submit_button;
 	
-	public void employerlogin(String empid,String pwd) {
-		employeeid.sendKeys(empid);
-		password.sendKeys(pwd);
-		signinbtn.click();
+
+	public void employerlogin() throws IOException {
+			
+			//Finding a file
+			File file = new File("/home/tarun/workspace1/HelloWorldWork/Bento_Automation/Resources/Bento_Data.xls");
+			//Loading a file
+			FileInputStream fileload = new FileInputStream(file);
+			System.out.println("file uploaded successfully");
+			
+			HSSFWorkbook wb = new HSSFWorkbook(fileload);
+			HSSFSheet sh = wb.getSheet("data");
+			
+			System.out.println(sh.getLastRowNum());
+		
+		String id = sh.getRow(0).getCell(0).getStringCellValue();	
+		String pwd = sh.getRow(0).getCell(1).getStringCellValue();	
+				
+			employeeid.sendKeys(id);
+			password.sendKeys(pwd);
+			
+			signinbtn.click();
 	}
 	
   	public void Step3_Payment_Information(String bank_account,String confirm_bank_account,

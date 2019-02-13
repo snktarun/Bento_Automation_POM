@@ -6,42 +6,47 @@ import java.io.FileInputStream;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.testng.annotations.Test;
 
 public class ReadData {
 
-	
-	public static void reading_data()
+	@Test
+	public static String[] reading_data()
 	{
+		String[] valArr = new String[2];
 		try{
 			//Finding a file
-		File file = new File("/home/tarun/workspace1/HelloWorldWork/Bento_Automation_POM/Resources/Bento_Data.xls");
+		File file = new File("/home/tarun/workspace1/HelloWorldWork/Bento_Automation/Resources/Bento_Data.xls");
 		//Loading a file
 		FileInputStream fileload = new FileInputStream(file);
 		System.out.println("file uploaded successfully");
 		
 		HSSFWorkbook wb = new HSSFWorkbook(fileload);
 		HSSFSheet sh = wb.getSheet("data");
+		
 		System.out.println(sh.getLastRowNum());
-		for(int i=1;i<=sh.getLastRowNum();i++)
+		
+		System.out.println(sh.getLeftCol());
+		
+		for(int i=1;i<	sh.getLastRowNum();i++)
 		{
-			Cell celldata =sh.getRow(i).getCell(0);
-			String cellvalue = celldata.getStringCellValue();
-			if (cellvalue.equalsIgnoreCase("empid")){
-				System.out.println(sh.getRow(i).getCell(0).getNumericCellValue());
-			}
-					
-			System.out.println(celldata);	
+			Cell celldata1 =sh.getRow(i).getCell(0);
+			Cell celldata2 =sh.getRow(i).getCell(1);
+			String valOne = celldata1.getStringCellValue();
+			String valTwo = celldata2.getStringCellValue();
+			valArr[0] = valOne;
+			valArr[1] = valTwo;
+			System.out.println(celldata1);
+			System.out.println(celldata2);
+			break;
 		}
-		
-		
-
-		}catch(Exception e){
+			}catch(Exception e){
 			System.out.println(e);
-		}
+		} 
+		
+		return valArr;
 	}
-		public static void main(String args[])
-		{
-			reading_data();
-		}
-	}
-
+}
+	
+		
