@@ -3,10 +3,6 @@ package com.Bento.qa.testcases;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -71,7 +67,7 @@ public void gmailsignintest()throws InterruptedException,IOException
 	gmailp.quitgmail();
 	Thread.sleep(2000);
 }
-@Test(priority=3)
+@Test(enabled = false)
 public void employerlauncher() throws InterruptedException,IOException  {
 	
 	initialization("Employer");
@@ -79,7 +75,7 @@ public void employerlauncher() throws InterruptedException,IOException  {
 	System.out.println("launch employer browser");
 }
 
-@Test(priority=4)
+@Test(enabled = false)
 public void employerlogin() throws InterruptedException,IOException  {
 	
 	

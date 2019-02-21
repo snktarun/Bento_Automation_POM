@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -16,11 +15,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.Bento.qa.base.TestBase;
-import com.Bento.qa.util.TestUtil;
-
-import java.util.regex.Pattern;
 
 public class GmailPage extends TestBase {
 	
@@ -57,7 +55,7 @@ public class GmailPage extends TestBase {
 	{
 		email.sendKeys(emailid);
 		Thread.sleep(1000);
-				nextbtn.click();
+		nextbtn.click();
 		Thread.sleep(2000);	
 		pwd.sendKeys(gpwd);
 		Thread.sleep(1000);
@@ -69,16 +67,17 @@ public class GmailPage extends TestBase {
 		List <WebElement> maillist = driver.findElements(By.xpath("//*[@class='y2']"));
 		System.out.println("entered into the first list ");
 				
-		for(int i=0;i<maillist.size();i++)
-		{
-			
-			maillist.get(i).click();
+			maillist.get(0).click();
 			System.out.println("first mail is opened successfully");
-			break;
-		}
+
+	
 	//verify link	
-		Thread.sleep(1000);
 		verifylink.click();
+		
+		WebDriverWait wait = new WebDriverWait(driver,5000);
+		wait.until(ExpectedConditions.elementToBeClickable(verifylink));
+		System.out.println("explicit condition ");
+		
 		Thread.sleep(5000);
 		List <String> windowhandles = new ArrayList <String> (driver.getWindowHandles());
 		
@@ -89,17 +88,14 @@ public class GmailPage extends TestBase {
 		System.out.println("clicked on inbox");
 		
 		Thread.sleep(2000);
+		
 	//open the second mail and get the employer id and password 
 		List <WebElement> maillist2 = driver.findElements(By.xpath("//*[@class='y2']"));
 		System.out.println("entered into the second list ");
+	
+		maillist2.get(0).click();
+		System.out.println("2nd mail is opened successfully ");
 		
-		for(int i=0;i<maillist2.size();i++)
-		{
-			maillist2.get(i).click();
-			
-			System.out.println("2nd mail is opened successfully ");
-			break;
-		}
 						
 		//driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		
@@ -109,8 +105,8 @@ public class GmailPage extends TestBase {
 		
 		String getempid1[] = getempid.split("\n");
 		
-        String EmployerID = getempid1[4].split(":")[1];
-        String Password = getempid1[5].split(":")[1];
+        String EmployerID = getempid1[4].split(":")[1].trim();
+        String Password = getempid1[5].split(":")[1].trim();
 
 		System.out.println("****** : " + getempid1[4].split(":")[1]);
 		System.out.println("****** : " + getempid1[5].split(":")[1]);
@@ -130,19 +126,21 @@ public class GmailPage extends TestBase {
 			Row row = sh.createRow(0);
 			 Cell cell1 = row.createCell(0);
 			 //cell1.setCellValue("email id details");
-			 cell1.setCellValue(EmployerID);
+			 cell1.setCellValue(EmployerID.trim());
 			 
 			 Cell cell2 = row.createCell(1);
-			 cell2.setCellValue(Password);
+			 cell2.setCellValue(Password.trim());
 			 
 			// cell2.setCellValue(TestBase.Password);
 			 
 				System.out.println(cell1);
-				
 				System.out.println(cell2);
-			 FileOutputStream fos = new FileOutputStream("/home/tarun/workspace1/HelloWorldWork/Bento_Automation/Resources/Bento_Data.xls");
+
+				//Writing the file 
+			FileOutputStream fos = new FileOutputStream("/home/tarun/workspace1/HelloWorldWork/Bento_Automation/Resources/Bento_Data.xls");
 			 wb.write(fos);
 				System.out.println("file write success");
+				wb.close();
 			 fos.close();
 			 
 			 System.out.println("excel sheet is closed");

@@ -1,6 +1,5 @@
 package com.Bento.qa.base;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,10 +7,6 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -74,8 +69,8 @@ public class TestBase {
 		} else if(page.equalsIgnoreCase("Employer")){
 			url = prop.getProperty("EmployerURL");
 		}
-		else if(page.equalsIgnoreCase("tv")){
-			url = prop.getProperty("tvurl");
+		else if(page.equalsIgnoreCase("Dentist")){
+			url = prop.getProperty("DentistURL");
 		}
 		else if(page.equalsIgnoreCase("gmail")){
 	url = prop.getProperty("gmailurl");		

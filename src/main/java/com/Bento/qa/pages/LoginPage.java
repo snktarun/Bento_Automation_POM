@@ -2,12 +2,11 @@ package com.Bento.qa.pages;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;

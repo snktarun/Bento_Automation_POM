@@ -1,11 +1,7 @@
 package com.Bento.qa.testcases;
 
-import java.awt.event.KeyEvent;
-import java.awt.Robot;
 import java.io.IOException;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

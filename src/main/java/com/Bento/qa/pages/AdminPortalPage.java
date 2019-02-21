@@ -1,19 +1,11 @@
 package com.Bento.qa.pages;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.internal.MouseAction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.Bento.qa.base.TestBase;
-import com.Bento.qa.util.TestUtil;
 
 public class AdminPortalPage extends TestBase {
 	
@@ -35,7 +27,6 @@ public class AdminPortalPage extends TestBase {
 	@FindBy(xpath = "//div[@role='menu']/div[1]/span") WebElement active;
 	@FindBy(xpath = "//div[@id='root']/following-sibling::div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[9]/div[1]/div[1]/button/div[1]/div[1]")
 	WebElement okbutton;
-	
 	
 	
 	public AdminPortalPage() {

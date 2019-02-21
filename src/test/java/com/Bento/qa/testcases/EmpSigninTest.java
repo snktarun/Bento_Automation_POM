@@ -1,23 +1,14 @@
 package com.Bento.qa.testcases;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.Bento.qa.base.ReadData;
 import com.Bento.qa.base.TestBase;
 import com.Bento.qa.pages.LoginPage;
 
-public class LoginTest extends TestBase {
+public class EmpSigninTest extends TestBase {
 	static LoginPage loginPage;
 	
 	/*public LoginTest() {
